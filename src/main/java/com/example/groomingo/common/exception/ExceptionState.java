@@ -15,7 +15,12 @@ public enum ExceptionState {
 	INVALID_TOKEN(403, HttpStatus.FORBIDDEN, "A0001", "Unauthorized"),
 	ILLEGAL_ARGUMENT_TOKEN(403, HttpStatus.UNAUTHORIZED, "A0002", "Illegal argument token exception"),
 	TOKEN_NOT_FOUND(401, HttpStatus.UNAUTHORIZED, "A0003", "Token is not found"),
-	TOKEN_EXPIRED(401, HttpStatus.UNAUTHORIZED, "A0004", "Token is expired")
+	TOKEN_EXPIRED(401, HttpStatus.UNAUTHORIZED, "A0004", "Token is expired"),
+
+	/**
+	 * 유저 도메인 관련 에러
+	 */
+	USER_NOT_FOUND(400, HttpStatus.BAD_REQUEST, "U0001", "UserEntity is not found")
 	;
 
 	private final int value;

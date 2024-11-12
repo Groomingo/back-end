@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -25,7 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class JwtTokenProvider {
 
-	private final String SECRET_KEY = "groomingo_jwt_secret_key!!!!!!!";
+	@Value("${jwt.secret-key}")
+	private String SECRET_KEY;
 	private final long jwtExpirationDate = 3600000;	//1시간
 
 	public String generateToken(Authentication authentication) {

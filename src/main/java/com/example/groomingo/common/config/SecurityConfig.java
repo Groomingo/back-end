@@ -69,7 +69,9 @@ public class SecurityConfig {
 
 	private List<String> permittedUrls() {
 		return List.of(
-			"/log-in"
+			"/log-in",
+			"/swagger-ui/**",
+			"/v3/api-docs/**"
 		);
 	}
 }

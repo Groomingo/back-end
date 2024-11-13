@@ -20,7 +20,8 @@ public enum ExceptionState {
 	/**
 	 * 유저 도메인 관련 에러
 	 */
-	USER_NOT_FOUND(400, HttpStatus.BAD_REQUEST, "U0001", "UserEntity is not found")
+	USER_NOT_FOUND(400, HttpStatus.BAD_REQUEST, "U0001", "UserEntity is not found"),
+	DUPLICATED_EMAIL(400, HttpStatus.BAD_REQUEST, "U0002", "email is already exist"),
 	;
 
 	private final int value;

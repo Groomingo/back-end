@@ -16,6 +16,9 @@ public class AuthController {
 
 	private final AuthService authService;
 
+	/**
+	 * 로그인
+	 */
 	@PostMapping("/log-in")
 	public ResponseEntity<String> logIn(@RequestBody Login.Request request) {
 		String token = authService.login(request);

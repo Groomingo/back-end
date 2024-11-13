@@ -23,7 +23,7 @@ public class AuthService {
 
 	public String login(Login.Request request) {
 		Authentication authentication = authenticationManager
-			.authenticate(new UsernamePasswordAuthenticationToken(request.username(), request.password()));
+			.authenticate(new UsernamePasswordAuthenticationToken(request.email(), request.password()));
 
 		return jwtTokenProvider.generateToken(authentication);
 	}

@@ -9,4 +9,6 @@ import com.example.groomingo.domain.user.domain.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
 	Optional<UserEntity> findByEmail(String email);
+
+	boolean existsByEmail(String email);
 }

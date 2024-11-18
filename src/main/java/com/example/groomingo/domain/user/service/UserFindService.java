@@ -1,9 +1,5 @@
 package com.example.groomingo.domain.user.service;
 
-import java.util.Optional;
-
-import javax.swing.text.html.Option;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,5 +22,9 @@ public class UserFindService {
 	public UserEntity getByEmail(String email) {
 		return userRepository.findByEmail(email)
 			.orElseThrow(() -> new UserException(ExceptionState.USER_NOT_FOUND));
+	}
+
+	public boolean isAlreadyMember(String email) {
+		return userRepository.existsByEmail(email);
 	}
 }

@@ -1,4 +1,4 @@
-package com.example.groomingo.domain.user.dto;
+package com.example.groomingo.domain.auth.dto;
 
 public record SignUpRequest(String email, String password) {
 }

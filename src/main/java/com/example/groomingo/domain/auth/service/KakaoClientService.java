@@ -10,7 +10,9 @@ import com.example.groomingo.domain.auth.dto.KakaoInfo;
 import com.example.groomingo.domain.auth.dto.KakaoLogin;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -23,18 +25,13 @@ public class KakaoClientService {
 	private String REDIRECT_URL;
 
 	public String getAuthorizeUrl() {
-		WebClient webClient = builder.build();
 		String uri = "https://kauth.kakao.com/oauth/authorize"
 			+ "?client_id=" + KAKAO_API_KEY
 			+ "&redirect_uri=" + REDIRECT_URL
 			+ "&response_type=code";
 
-		return webClient.get()
-			.uri(uri)
-			.retrieve()
-			.bodyToMono(String.class)
-			.block();
-
+		log.info("[카카오 인증코드] url: {}", uri);
+		return uri;
 	}
 
 	public KakaoLogin.Response authorize(String code) {
@@ -58,8 +55,8 @@ public class KakaoClientService {
 
 		return webClient.get()
 			.uri(uri)
-			.header("Authorization", "Bearer " + accessToken,
-				HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded;charset=utf-8")
+			.header("Authorization", "Bearer " + accessToken)
+			.header(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded;charset=utf-8")
 			.retrieve()
 			.bodyToMono(KakaoInfo.class)
 			.block();

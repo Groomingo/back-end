@@ -28,13 +28,13 @@ public class JwtTokenProvider {
 
 	@Value("${jwt.secret-key}")
 	private String SECRET_KEY;
-	private final long jwtExpirationDate = 3600000;	//1시간
+	private static final long JWT_EXPIRE = 3600000;	//1시간
 
 	public String generateToken(Authentication authentication) {
 		return Jwts.builder()
 			.setSubject(authentication.getName())
 			.setIssuedAt(new Date())
-			.setExpiration(new Date(System.currentTimeMillis() + jwtExpirationDate))
+			.setExpiration(new Date(System.currentTimeMillis() + JWT_EXPIRE))
 			.signWith(getSigningKey(), SignatureAlgorithm.HS512)
 			.compact();
 	}

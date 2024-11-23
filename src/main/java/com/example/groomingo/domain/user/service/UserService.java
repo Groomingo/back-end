@@ -1,6 +1,5 @@
 package com.example.groomingo.domain.user.service;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,8 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class UserService {
 
-	@Value("${kakao.fixed-password}")
-	private static String FIXED_KAKAO_PASSWORD;
 	private final PasswordEncoder passwordEncoder;
 	private final UserRepository userRepository;
 
@@ -34,11 +31,12 @@ public class UserService {
 				.build());
 	}
 
-	public void saveByKakao(KakaoEntity kakaoEntity) {
-		userRepository.save(
+	public UserEntity saveByKakao(KakaoEntity kakaoEntity, String password) {
+		return userRepository.save(
 			UserEntity.builder()
+				.kakaoEntity(kakaoEntity)
 				.role(Role.USER)
-				.password(passwordEncoder.encode(FIXED_KAKAO_PASSWORD))
+				.password(passwordEncoder.encode(password))
 				.build()
 		);
 	}

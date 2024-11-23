@@ -6,19 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.groomingo.domain.auth.dto.KakaoLogin;
-import com.example.groomingo.domain.auth.service.AuthService;
+import com.example.groomingo.domain.auth.service.KakaoAuthService;
 import com.example.groomingo.domain.auth.service.KakaoClientService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/oauth")
+@RequestMapping("/auth")
 public class OAuthKakaoController {
 
 	private final KakaoClientService kakaoClientService;
-	private final AuthService authService;
+	private final KakaoAuthService kakaoAuthService;
 
 	/**
 	 * 카카오 인증코드 요청
@@ -33,7 +32,8 @@ public class OAuthKakaoController {
 	 * 카카오 로그인 혹은 회원가입
 	 */
 	@GetMapping("/kakao/log-in")
-	public ResponseEntity loginByKakao(@RequestParam String code) {
-		authService.loginByKakao(code);
+	public ResponseEntity<String> loginByKakao(@RequestParam String code) {
+		String accessToken = kakaoAuthService.loginByKakao(code);
+		return ResponseEntity.ok(accessToken);
 	}
 }

@@ -42,7 +42,7 @@ public class AuthController {
 	 * 유저 회원가입
 	 */
 	@PostMapping("/sign-up")
-	public ResponseEntity<String> signUp(SignUpRequest request) {
+	public ResponseEntity<String> signUp(@RequestBody SignUpRequest request) {
 		String email = authService.signUp(request);
 		return ResponseEntity.ok(email);
 	}

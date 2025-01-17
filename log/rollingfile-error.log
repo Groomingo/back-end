@@ -1,0 +1,8 @@
+[1d168703][ERROR] 2025-01-17 22:44:08.248 [http-nio-8080-exec-2  ] c.e.g.c.l.ThreadLocalTrace     - |   |<X-UserService.save(..) time=20321ms ex=java.lang.IllegalArgumentException: rawPassword cannot be null
+[1d168703][ERROR] 2025-01-17 22:44:08.249 [http-nio-8080-exec-2  ] c.e.g.c.l.ThreadLocalTrace     - |<X-AuthService.signUp(..) time=20358ms ex=java.lang.IllegalArgumentException: rawPassword cannot be null
+[1d168703][ERROR] 2025-01-17 22:44:08.253 [http-nio-8080-exec-2  ] c.e.g.c.l.ThreadLocalTrace     - AuthController.signUp(..) time=20366ms ex=java.lang.IllegalArgumentException: rawPassword cannot be null
+[null][ERROR] 2025-01-17 22:44:08.274 [http-nio-8080-exec-2  ] c.e.g.c.j.JwtAuthenticationEntryPoint - Commence: unauthorized token error
+[017c7cec][ERROR] 2025-01-17 22:44:11.607 [http-nio-8080-exec-3  ] c.e.g.c.l.ThreadLocalTrace     - |   |<X-UserService.save(..) time=1076ms ex=java.lang.IllegalArgumentException: rawPassword cannot be null
+[017c7cec][ERROR] 2025-01-17 22:44:11.607 [http-nio-8080-exec-3  ] c.e.g.c.l.ThreadLocalTrace     - |<X-AuthService.signUp(..) time=1080ms ex=java.lang.IllegalArgumentException: rawPassword cannot be null
+[017c7cec][ERROR] 2025-01-17 22:44:11.608 [http-nio-8080-exec-3  ] c.e.g.c.l.ThreadLocalTrace     - AuthController.signUp(..) time=1083ms ex=java.lang.IllegalArgumentException: rawPassword cannot be null
+[null][ERROR] 2025-01-17 22:44:11.611 [http-nio-8080-exec-3  ] c.e.g.c.j.JwtAuthenticationEntryPoint - Commence: unauthorized token error

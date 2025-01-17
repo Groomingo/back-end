@@ -1,0 +1,63 @@
+<configuration>
+
+    <!-- 로깅 경로 설정 -->
+    <property name="LOG_PATH" value="log" />
+
+    <!-- Console Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%highlight([%X{trace_id:-null}][%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n)</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Rolling File Appender -->
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/rollingfile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archive/common/rollingfile.log_%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%X{trace_id:-null}][%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%-22t] %-30c{1} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Rolling File Error Appender -->
+    <appender name="ROLLING_FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/rollingfile-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archive/error/rollingfile-error.log_%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%X{trace_id:-null}][%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%-22t] %-30c{1} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <!-- Root Logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <!-- Application-specific Logger -->
+    <logger name="com.example.groomingo" level="TRACE" additivity="false">
+        <appender-ref ref="ROLLING_FILE" />
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="ROLLING_FILE_ERROR" />
+    </logger>
+
+    <!-- Hibernate SQL Logger -->
+    <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+        <appender-ref ref="ROLLING_FILE" />
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <!-- Spring Transaction Logger -->
+    <logger name="org.springframework.transaction" level="WARN" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+</configuration>

@@ -11,7 +11,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
@@ -38,9 +38,10 @@ kakao:
   fixed-password: dvns2egLHzsPNImxmDPVMfhKYH6OEPBI
 
 logging:
-  config: classpath:log4j2.yml
+  config: classpath:logback-spring.xml
 
 ---
+
 spring:
   config:
     activate:
@@ -50,7 +51,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/groomingo
     username: postgres
-    password: ckddn951753
+    password: 951753
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -86,3 +87,6 @@ ssh:
     port: 22
     user: ENC(+9SkvSqiMfsk9rdi3yo02Q==)
     key: ENC(ypcPYYy3tfrFV6oUSrlYrWcf/drkavKkDKoQoUFIJGc=)
+
+logging:
+  config: classpath:logback-spring.xml

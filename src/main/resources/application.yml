@@ -1,0 +1,88 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  pid:
+    file: server.pid
+  datasource:
+    url: ENC(/ioEr3Vn8Stu34K04hrHG/E/dzXlMlamuIVSkmV7Ch2XzCclciXG+JcGM590bdQNb4OchL/Dsho=)
+    username: ENC(HsVN3dMuK2AtgJnw2KaQp93aPmOU5LVH)
+    password: ENC(XoxdnVOLlsGhaGj+HsZrFkp5efBEUsVH)
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  secret-key: ENC(1I4c5hbUT0JEt67GjqmxO9LgqVcMTaMX1SEl0/JW7ebphTqXQBekKw==)
+
+jasypt:
+  encryptor:
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    property:
+      prefix: ENC(
+      suffix: )
+    algorithm: PBEWithMD5AndDES
+
+server:
+  port: 8080
+  shutdown: graceful
+
+kakao:
+  api-key: ENC(Emwn7PraVshdxsV95RlwjVdhq17NtzIGFcf78Ka/grmlXJ7b8jdvtyQAJ7IlXE0g)
+  redirect-url: ENC(CwssXwIZgWnydwPnHRd0EEu0Yy5JeLRj5+hr21RtCqU1O44VKohcQmOGnmVbmCamJtEhRqPDVlVN2YXSJi6WAA==)
+  fixed-password: dvns2egLHzsPNImxmDPVMfhKYH6OEPBI
+
+logging:
+  config: classpath:log4j2.yml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: deploy
+  pid:
+    file: server.pid
+  datasource:
+    url: jdbc:postgresql://localhost:5432/groomingo
+    username: postgres
+    password: ckddn951753
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  secret-key: groomingo_jwt_secret_key!!!!!!!
+
+jasypt:
+  encryptor:
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    property:
+      prefix: ENC(
+      suffix: )
+    algorithm: PBEWithMD5AndDES
+
+server:
+  port: 8080
+  shutdown: graceful
+
+kakao:
+  api-key: ENC(Emwn7PraVshdxsV95RlwjVdhq17NtzIGFcf78Ka/grmlXJ7b8jdvtyQAJ7IlXE0g)
+  redirect-url: ENC(CwssXwIZgWnydwPnHRd0EEu0Yy5JeLRj5+hr21RtCqU1O44VKohcQmOGnmVbmCamJtEhRqPDVlVN2YXSJi6WAA==)
+  fixed-password: dvns2egLHzsPNImxmDPVMfhKYH6OEPBI
+
+ssh:
+  bastion:
+    host: ENC(a32Vezjjtf5zO9sl97CZUd9ZoEo/BnEu)
+    port: 22
+    user: ENC(+9SkvSqiMfsk9rdi3yo02Q==)
+    key: ENC(ypcPYYy3tfrFV6oUSrlYrWcf/drkavKkDKoQoUFIJGc=)

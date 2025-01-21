@@ -11,14 +11,14 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate:
         format_sql: true
 
 jwt:
-  secret-key: ENC(1I4c5hbUT0JEt67GjqmxO9LgqVcMTaMX1SEl0/JW7ebphTqXQBekKw==)
+  secret-key: ENC(OEu8Dm8b0qKjOV0qLoauc6QKJ3Lrb+Cu53wSgF7+uwNut8YpjqkRH74mJjvEq07sGWewktagOGViRlNnk6qID8Ox5l3TMZj0HDYCo8usB7q0lKvszpuaww==)
 
 jasypt:
   encryptor:
@@ -49,9 +49,9 @@ spring:
   pid:
     file: server.pid
   datasource:
-    url: jdbc:postgresql://localhost:5432/groomingo
-    username: postgres
-    password: 951753
+    url: ENC(rpBKOI9QTgDo/R5PVVTjTQik18Oyi8EYiVBGQwlskPiwIVqahfdK175KfxmtCgpkH/aPAOBBp14=)
+    username: ENC(uAsmKbPlVf/Zn8IUz85ZHta/LjRDC5dX)
+    password: ENC(1bCxjELMjBQamwqhK+x3nQ==)
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -62,7 +62,7 @@ spring:
         format_sql: true
 
 jwt:
-  secret-key: groomingo_jwt_secret_key!!!!!!!
+  secret-key: ENC(OEu8Dm8b0qKjOV0qLoauc6QKJ3Lrb+Cu53wSgF7+uwNut8YpjqkRH74mJjvEq07sGWewktagOGViRlNnk6qID8Ox5l3TMZj0HDYCo8usB7q0lKvszpuaww==)
 
 jasypt:
   encryptor:

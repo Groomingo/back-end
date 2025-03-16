@@ -22,6 +22,7 @@ public enum ExceptionState {
 	 */
 	USER_NOT_FOUND(400, HttpStatus.BAD_REQUEST, "U0001", "UserEntity is not found"),
 	DUPLICATED_EMAIL(400, HttpStatus.BAD_REQUEST, "U0002", "email is already exist"),
+	MANAGER_ACCOUNT_IS_ALREADY_EXIST(400, HttpStatus.BAD_REQUEST, "U0003", "Manager account is already exist"),
 	;
 
 	private final int value;

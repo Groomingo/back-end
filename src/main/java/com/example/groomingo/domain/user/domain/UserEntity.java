@@ -1,5 +1,7 @@
 package com.example.groomingo.domain.user.domain;
 
+import com.example.groomingo.domain.manager.domain.ManagerEntity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -33,4 +35,12 @@ public class UserEntity {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "manager_id", nullable = false)
+	private ManagerEntity managerEntity;
+
+
+	public void enrollManager(ManagerEntity managerEntity) {
+		this.managerEntity = managerEntity;
+	}
 }
